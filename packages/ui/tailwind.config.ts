@@ -1,7 +1,8 @@
 import type { Config } from "tailwindcss"
 import tailwindcssAnimate from "tailwindcss-animate"
-import { fontFamily } from "tailwindcss/defaultTheme"
-
+import { fontFamily } from "tailwindcss/defaultTheme.js"
+// @ts-expect-error Tailwind motion does not have a type definition
+import tailwindcssMotion from "tailwindcss-motion"
 const config = {
   darkMode: ["class"],
   content: [
@@ -19,7 +20,7 @@ const config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
+        background: "var(--background)",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -57,7 +58,7 @@ const config = {
       },
     },
   },
-  plugins: [tailwindcssAnimate],
+  plugins: [tailwindcssAnimate, tailwindcssMotion],
 } satisfies Config
 
 export default config

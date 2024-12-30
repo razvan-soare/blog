@@ -1,0 +1,38 @@
+@font-face {
+  font-family: "Wotfard";
+  src: url("../static/fonts/wotfard/wotfard-regular-webfont.woff2");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Wotfard";
+  src: url("../static/fonts/wotfard/wotfard-medium-webfont.woff2");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Wotfard";
+  src: url("../static/fonts/wotfard/wotfard-semibold-webfont.woff2");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "LeagueMono";
+  src: url("../static/fonts/leaguemono/LeagueMono-Regular.woff2");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "LeagueMono";
+  src: url("../static/fonts/leaguemono/LeagueMono-SemiBold.woff2");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "LeagueMono";
+  src: url("../static/fonts/leaguemono/LeagueMono-Bold.woff2");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Sriracha";
+  src: url("../static/fonts/sriracha/sriracha-latin-400.0b3278b3dc419ca5a6b5e56f0eac466f.woff2");
+}
+@font-face {
+  font-family: "Reenie";
+  src: url("../static/fonts/reenie_beanie/ReenieBeanie-Regular.ttf");
+}
