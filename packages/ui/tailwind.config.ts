@@ -3,6 +3,7 @@ import tailwindcssAnimate from "tailwindcss-animate"
 import { fontFamily } from "tailwindcss/defaultTheme.js"
 // @ts-expect-error Tailwind motion does not have a type definition
 import tailwindcssMotion from "tailwindcss-motion"
+
 const config = {
   darkMode: ["class"],
   content: [
@@ -12,6 +13,15 @@ const config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(10px)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+      },
+      animation: {
+        float: "float 4s ease-in-out infinite",
+      },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         mono: ["var(--font-mono)", ...fontFamily.mono],
@@ -21,6 +31,7 @@ const config = {
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "var(--background)",
+        homeBg: "var(--home-bg)",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",

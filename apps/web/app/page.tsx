@@ -1,22 +1,13 @@
-"use client"
-
-import { Button } from "@workspace/ui/components/button"
-import { useTheme } from "next-themes"
+import { StickMan } from "@/components/stickMan"
 
 export default function Page() {
-  const { theme, setTheme } = useTheme()
   return (
-    <div className="flex min-h-svh items-center justify-center">
-      <div className="flex flex-col items-center justify-center gap-4">
-        <h1 className="text-2xl font-bold">Hello World</h1>
-        <Button
-          size="sm"
-          onClick={() => {
-            setTheme(theme === "dark" ? "light" : "dark")
-          }}
-        >
-          Button
-        </Button>
+    <div className="flex items-center justify-center">
+      <div className="mt-40 flex w-full flex-col-reverse gap-2 sm:flex-row sm:gap-8">
+        <div className="flex w-full sm:w-[60%]">1</div>
+        <div className="flex min-h-96 w-full sm:w-[40%]">
+          <StickMan />
+        </div>
       </div>
     </div>
   )

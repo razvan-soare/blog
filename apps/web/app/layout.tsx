@@ -16,7 +16,9 @@ export default function RootLayout({
           <div className="relative">
             <Header />
 
-            <div className="px-4 pt-8 sm:p-12">{children}</div>
+            <div className="mx-auto max-w-7xl px-4 pt-8 sm:p-12">
+              {children}
+            </div>
           </div>
         </Providers>
         <SpeedInsights />
