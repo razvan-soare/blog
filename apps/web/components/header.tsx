@@ -28,7 +28,7 @@ export function Header() {
     if (!mounted)
       return (
         <Button variant="ghost" size="icon">
-          <Sun className="h-7 w-7 -motion-rotate-in-180 motion-blur-in-sm" />
+          <Sun className="-motion-rotate-in-180 motion-blur-in-sm h-7 w-7" />
         </Button>
       )
 
@@ -41,9 +41,9 @@ export function Header() {
         }}
       >
         {theme === "dark" ? (
-          <Sun className="h-7 w-7 -motion-rotate-in-180" />
+          <Sun className="-motion-rotate-in-180 h-7 w-7" />
         ) : (
-          <Moon className="h-7 w-7 motion-rotate-in-180" />
+          <Moon className="motion-rotate-in-180 h-7 w-7" />
         )}
         {isMobile && <span>Toggle theme</span>}
         <span className="sr-only">Toggle theme</span>
@@ -52,8 +52,8 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-5 z-50 px-8 py-2 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 max-w-screen-xl mx-auto">
-      <div className="container flex items-center px-4 w-full mx-auto gap-12">
+    <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 mx-auto mt-5 w-full max-w-screen-xl border-b px-8 py-2 backdrop-blur">
+      <div className="container mx-auto flex w-full items-center gap-12 px-4">
         <Link href="/" className="flex items-center space-x-2">
           <span className="text-xl tracking-wider text-[#e60067]">
             Razvan Soare
@@ -61,7 +61,7 @@ export function Header() {
         </Link>
         <nav className="flex flex-1 items-center justify-between space-x-6 text-sm font-medium">
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center justify-between w-full">
+          <div className="hidden w-full items-center justify-between md:flex">
             <div className="flex items-center space-x-6">
               <StyledNavLink href="/">Home</StyledNavLink>
               <StyledNavLink href="/about">About</StyledNavLink>
@@ -74,7 +74,7 @@ export function Header() {
             </div>
           </div>
           {/* Mobile Navigation */}
-          <div className="flex md:hidden justify-end w-full">
+          <div className="flex w-full justify-end md:hidden">
             <Drawer>
               <DrawerTrigger asChild>
                 <Button variant="ghost" size="icon">
