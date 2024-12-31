@@ -2,6 +2,7 @@ import { Header } from "@/components/header"
 import { Providers } from "@/components/providers"
 import "@workspace/ui/globals.css"
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function RootLayout({
   children,
@@ -18,6 +19,7 @@ export default function RootLayout({
             <div className="px-4 pt-8 sm:p-12">{children}</div>
           </div>
         </Providers>
+        <SpeedInsights />
         <Analytics />
       </body>
     </html>
