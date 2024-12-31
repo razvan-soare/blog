@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.47.10",
+    "@vercel/analytics": "^1.4.1",
     "@workspace/ui": "workspace:*",
     "dotenv": "^16.4.7",
     "lucide-react": "0.456.0",

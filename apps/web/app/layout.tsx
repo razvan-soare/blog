@@ -1,6 +1,7 @@
 import { Header } from "@/components/header"
 import { Providers } from "@/components/providers"
 import "@workspace/ui/globals.css"
+import { Analytics } from "@vercel/analytics/react"
 
 export default function RootLayout({
   children,
@@ -9,14 +10,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={"antialiased bg-background"}>
+      <body className={"bg-background antialiased"}>
         <Providers>
-          <div className="relative ">
+          <div className="relative">
             <Header />
 
-            <div className="pt-8 px-4 sm:p-12">{children}</div>
+            <div className="px-4 pt-8 sm:p-12">{children}</div>
           </div>
         </Providers>
+        <Analytics />
       </body>
     </html>
   )
