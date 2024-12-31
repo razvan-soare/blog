@@ -1,0 +1,7 @@
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+if [ "$branch" = "main" ]; then
+  echo "🔄 Syncing MDX content with Supabase... 🔄"
+  cd apps/web && pnpm tsx scripts/sync-mdx.ts
+  echo "🟢 MDX content synced with Supabase 🟢"
+fi 
