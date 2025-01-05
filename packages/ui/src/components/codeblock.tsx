@@ -1,13 +1,19 @@
 "use client"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism"
+import {
+  atomDark,
+  oneLight,
+} from "react-syntax-highlighter/dist/cjs/styles/prism"
 import { IconCheck, IconCopy } from "@tabler/icons-react"
+
+import { useTheme } from "next-themes"
 
 type CodeBlockProps = {
   language: string
   filename: string
   highlightLines?: number[]
+  showLineNumbers?: boolean
 } & (
   | {
       code: string
@@ -30,14 +36,22 @@ export const CodeBlock = ({
   code,
   highlightLines = [],
   tabs = [],
+  showLineNumbers = true,
 }: CodeBlockProps) => {
   const [copied, setCopied] = React.useState(false)
+  const [mounted, setMounted] = useState(false)
   const [activeTab, setActiveTab] = React.useState(0)
+  const { theme } = useTheme()
+  const isDarkMode = theme === "dark"
 
   const tabsExist = tabs.length > 0
 
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const copyToClipboard = async () => {
-    const textToCopy = tabsExist ? tabs[activeTab].code : code
+    const textToCopy = tabsExist ? tabs[activeTab]?.code : code
     if (textToCopy) {
       await navigator.clipboard.writeText(textToCopy)
       setCopied(true)
@@ -45,16 +59,16 @@ export const CodeBlock = ({
     }
   }
 
-  const activeCode = tabsExist ? tabs[activeTab].code : code
+  const activeCode = tabsExist ? tabs[activeTab]?.code : code
   const activeLanguage = tabsExist
-    ? tabs[activeTab].language || language
+    ? tabs[activeTab]?.language || language
     : language
   const activeHighlightLines = tabsExist
-    ? tabs[activeTab].highlightLines || []
+    ? tabs[activeTab]?.highlightLines || []
     : highlightLines
 
   return (
-    <div className="relative w-full rounded-lg bg-slate-900 p-4 font-mono text-sm">
+    <div className="bg-syntaxBg relative w-full rounded-lg p-4 font-mono text-sm">
       <div className="flex flex-col gap-2">
         {tabsExist && (
           <div className="flex overflow-x-auto">
@@ -87,7 +101,7 @@ export const CodeBlock = ({
       </div>
       <SyntaxHighlighter
         language={activeLanguage}
-        style={atomDark}
+        style={mounted ? (isDarkMode ? atomDark : oneLight) : oneLight}
         customStyle={{
           margin: 0,
           padding: 0,
@@ -95,7 +109,7 @@ export const CodeBlock = ({
           fontSize: "0.875rem", // text-sm equivalent
         }}
         wrapLines={true}
-        showLineNumbers={true}
+        showLineNumbers={showLineNumbers}
         lineProps={(lineNumber) => ({
           style: {
             backgroundColor: activeHighlightLines.includes(lineNumber)

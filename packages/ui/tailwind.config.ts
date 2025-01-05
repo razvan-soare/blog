@@ -42,6 +42,8 @@ const config = {
         background: "var(--background)",
         homeBg: "var(--home-bg)",
         foreground: "hsl(var(--foreground))",
+        syntaxBg: "var(--syntax-bg)",
+        syntaxHighlight: "var(--syntax-highlight)",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

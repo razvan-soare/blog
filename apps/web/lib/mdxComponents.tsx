@@ -59,17 +59,11 @@ export const components: React.ComponentProps<
   VideoGifImg: () => {
     return null
   },
-  CodeBlock,
-  pre: function pre(preProps) {
-    const props = preToCodeBlock(preProps)
-    // if there's a codeString and some props, we passed the test
-    if (props) {
-      return <Code {...props} />
-    }
-
-    // it's possible to have a pre without a code in it
-    return <pre {...preProps} />
-  },
+  CodeBlock: (props: any) => (
+    <div className="mb-20 mt-10">
+      <CodeBlock {...props} />
+    </div>
+  ),
 }
 
 // // Customize markdown component

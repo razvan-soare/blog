@@ -19,6 +19,8 @@
     --home-bg: #d1e8f7;
     --highlight: #e60067;
     --tertiary: #2c0b8e;
+    --syntax-bg: #f5f6f9;
+    --syntax-highlight: #e9ebf2;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -49,6 +51,8 @@
     --home-bg: #1c272f;
     --highlight: #e60067;
     --tertiary: #ffe100;
+    --syntax-bg: #151f28;
+    --syntax-highlight: #212e3c;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;

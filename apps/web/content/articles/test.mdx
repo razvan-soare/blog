@@ -25,31 +25,43 @@ Next not only provides support for SSR (server-side-rendering) but allows us to 
 
 The basic structure of a Next project will look similar to this. For more visit the [official Next.js documentation](https://nextjs.org/docs/getting-started).
 
-```js:title=EditableText
-import React from "react";
+<CodeBlock
+  language="jsx"
+  filename="EditableText.jsx"
+  code={`import React from "react";
+    
+  const EditableText = ({ children, fileUrl, id }) => {
+    return (
+      <span>
+        {children}
+      </span>
+    );
+  };
+  
+  export default EditableText;`}
+/>
 
-const EditableText = ({ children, fileUrl, id }) => {
-  return (
-    <span>
-      {children}
-    </span>
-  );
-};
-
-export default EditableText;
-```
-
-<CodeBlock language="jsx" filename="EditableText.tsx" code={
-`import React from "react";
-
-const EditableText = ({ children, fileUrl, id }) => {
-  return (
-    <span>{children}</span>
-  ); 
-};
-
-export default EditableText`
-} />
+<CodeBlock
+  showLineNumbers={false}
+  code={`/root
+    .next/
+    src/
+        Button/
+    pages/
+        api/
+            api_route.jsx
+        _app.jsx
+        index.jsx
+        about.jsx
+    public/
+        favicon.ico
+        header.png
+    .env
+    next.config.js
+    package.json
+    README.md
+`}
+/>
 
 ```Structure
 /root
