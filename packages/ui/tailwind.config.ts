@@ -3,12 +3,17 @@ import tailwindcssAnimate from "tailwindcss-animate"
 import { fontFamily } from "tailwindcss/defaultTheme.js"
 // @ts-expect-error Tailwind motion does not have a type definition
 import tailwindcssMotion from "tailwindcss-motion"
+import tailwindcssTypography from "@tailwindcss/typography"
+// @ts-expect-error Missing type definitions for internal tailwind utility
+import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette.js"
 
 const config = {
   darkMode: ["class"],
   content: [
-    "app/**/*.{ts,tsx}",
-    "components/**/*.{ts,tsx}",
+    "../../apps/web/lib/**/*.{ts,tsx}",
+    "../../apps/web/components/**/*.{ts,tsx}",
+    "../../apps/web/content/**/*.{ts,tsx}",
+    "../../apps/web/app/**/*.{ts,tsx}",
     "../../packages/ui/src/components/**/*.{ts,tsx}",
   ],
   theme: {
@@ -25,6 +30,10 @@ const config = {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         mono: ["var(--font-mono)", ...fontFamily.mono],
+        sriracha: ["Sriracha", ...fontFamily.sans],
+        reenie: ["Reenie", ...fontFamily.sans],
+        wotfard: ["Wotfard", ...fontFamily.sans],
+        league: ["LeagueMono", ...fontFamily.sans],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -38,9 +47,11 @@ const config = {
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
+          DEFAULT: "var(--secondary)",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        tertiary: "var(--tertiary)",
+        highlight: "var(--highlight)",
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -69,7 +80,24 @@ const config = {
       },
     },
   },
-  plugins: [tailwindcssAnimate, tailwindcssMotion],
+  plugins: [
+    tailwindcssAnimate,
+    tailwindcssMotion,
+    tailwindcssTypography,
+    addVariablesForColors,
+  ],
 } satisfies Config
 
 export default config
+
+// This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
+function addVariablesForColors({ addBase, theme }: any) {
+  const allColors = flattenColorPalette(theme("colors"))
+  const newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  )
+
+  addBase({
+    ":root": newVars,
+  })
+}

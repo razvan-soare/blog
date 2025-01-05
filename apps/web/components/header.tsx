@@ -28,7 +28,7 @@ export function Header() {
     if (!mounted)
       return (
         <Button variant="ghost" size="icon">
-          <Sun className="-motion-rotate-in-180 motion-blur-in-sm h-7 w-7" />
+          <Sun className="-motion-rotate-in-180 motion-blur-in-sm h-5 w-5" />
         </Button>
       )
 
@@ -41,9 +41,9 @@ export function Header() {
         }}
       >
         {theme === "dark" ? (
-          <Sun className="-motion-rotate-in-180 h-7 w-7" />
+          <Sun className="-motion-rotate-in-180 h-5 w-5" />
         ) : (
-          <Moon className="motion-rotate-in-180 h-7 w-7" />
+          <Moon className="motion-rotate-in-180 h-5 w-5" />
         )}
         {isMobile && <span>Toggle theme</span>}
         <span className="sr-only">Toggle theme</span>
@@ -55,7 +55,7 @@ export function Header() {
     <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 mx-auto mt-5 w-full max-w-screen-xl border-b px-8 py-2 backdrop-blur">
       <div className="container mx-auto flex w-full items-center gap-12 px-4">
         <Link href="/" className="flex items-center space-x-2">
-          <span className="text-xl tracking-wider text-[#e60067]">
+          <span className="text-highlight text-xl tracking-wider">
             Razvan Soare
           </span>
         </Link>

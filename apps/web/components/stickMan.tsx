@@ -1,23 +1,14 @@
 "use client"
+import { TextGenerateEffect } from "@workspace/ui/components/text-generate-effect"
 import Image from "next/image"
-import React, { useEffect } from "react"
+import { useEffect, useState } from "react"
 import IslandSvg from "../images/svg/island/island-4.svg"
 import MonsterSvg from "../images/svg/monster/monster-4"
 import PiggySvg from "../images/svg/monster/my-piggy.svg"
 
-interface Props {
-  children?: React.ReactNode
-}
-
-const Thought: React.FC<Props> = ({ children }) => {
-  return (
-    <div className="bg-homeBg thought-bubble relative m-5 flex min-h-[40px] min-w-[40px] items-center justify-center rounded-[30px] p-5 text-center">
-      {children}
-    </div>
-  )
-}
-
 export const StickMan = () => {
+  const [hoverCount, setHoverCount] = useState(0)
+
   useEffect(() => {
     const leftEye = document.getElementById("left-eye")
     const rightEye = document.getElementById("right-eye")
@@ -80,22 +71,17 @@ export const StickMan = () => {
   }, [])
 
   return (
-    <div className="motion-delay-500 motion-duration-2000 motion-opacity-in-0 bg-background group relative z-[180] ml-auto h-[200px] w-[200px] rounded-full shadow-[0px_0px_35px_35px_var(--background)]">
-      <div className="pointer-events-none absolute -top-40 right-[100px] w-[500px] pb-[100px] opacity-0 transition-opacity duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
-        <Thought>
-          <h1 className="relative text-xl leading-8 text-[--text] md:text-center md:text-2xl md:leading-[30px]">
-            Hello{" "}
-            <span role="img" aria-label="hi">
-              👋
-            </span>{" "}
-            I am Razvan,{" "}
-            <span className="text-[--tertiary]">React developer</span> and
-            technology enthusiast{" "}
-            <span role="img" aria-label="tada">
-              🎉
-            </span>
-          </h1>
-        </Thought>
+    <div
+      className="motion-delay-500 motion-duration-2000 motion-opacity-in-0 bg-background group relative z-[180] ml-auto h-[200px] w-[200px] rounded-full shadow-[0px_0px_35px_35px_var(--background)]"
+      onMouseEnter={() => setHoverCount((prev) => prev + 1)}
+    >
+      <div className="pointer-events-none absolute -top-48 right-[100px] w-[420px] pb-[100px] opacity-0 transition-opacity duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
+        <div className="bg-homeBg thought-bubble relative m-5 flex min-h-[40px] min-w-[40px] items-center justify-center rounded-[30px] p-5 text-center">
+          <TextGenerateEffect
+            key={hoverCount}
+            words={`Hello 👋 I am Razvan, React developer and technology enthusiast 🎉`}
+          />
+        </div>
       </div>
       <div className="animate-float relative flex w-full flex-col items-center justify-center">
         <MonsterSvg className="relative z-10 ml-0 h-1/2 w-1/2" />

@@ -4,6 +4,7 @@ import { serialize } from "next-mdx-remote/serialize"
 import fs from "fs"
 import path from "path"
 import dotenv from "dotenv"
+import { MdxDocument } from "@/lib/types"
 
 // Load environment variables
 dotenv.config({ path: ".env.local" })
@@ -18,15 +19,6 @@ if (!supabaseUrl || !supabaseKey) {
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 const CONTENT_DIR = path.join(process.cwd(), "content")
-
-interface MdxDocument {
-  title: string
-  date: string
-  tags: string[]
-  type: string
-  excerpt: string
-  draft?: boolean
-}
 
 // Add this helper function to recursively get all files
 function getAllFiles(dirPath: string, arrayOfFiles: string[] = []): string[] {
@@ -76,8 +68,8 @@ async function syncMdx() {
       }
 
       const post = {
-        slug: frontmatter.title.toLowerCase().replace(/\s+/g, "-"),
-        title: frontmatter.title || "Untitled",
+        slug: frontmatter.slug,
+        title: frontmatter.title,
         excerpt: frontmatter.excerpt || "",
         date: frontmatter.date
           ? new Date(frontmatter.date).toISOString()

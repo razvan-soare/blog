@@ -11,6 +11,7 @@
     "sync-mdx": "tsx scripts/sync-mdx.ts"
   },
   "dependencies": {
+    "@mdx-js/react": "^3.1.0",
     "@supabase/supabase-js": "^2.47.10",
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
