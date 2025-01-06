@@ -1,8 +1,6 @@
-import { MarkdownLink } from "@/components/mdxComponents/MarkdownLink"
 import * as mdx from "@mdx-js/react"
 import { CodeBlock } from "@workspace/ui/components/codeblock"
 import { LinkPreview } from "@workspace/ui/components/link-preview"
-import Link, { LinkProps } from "next/link"
 import { AnchorHTMLAttributes, DetailedHTMLProps, HTMLAttributes } from "react"
 
 export const components: React.ComponentProps<
@@ -14,13 +12,6 @@ export const components: React.ComponentProps<
       HTMLAnchorElement
     >
   ) {
-    const linkProps = {
-      children: props.children,
-      className:
-        "text-highlight hover:[text-decoration-line:underline] hover:[text-underline-offset:4px] font-normal",
-      ...props,
-    } as LinkProps & { children: React.ReactNode }
-
     return (
       <LinkPreview url={props.href ?? ""}>
         <span className="text-highlight font-normal hover:[text-decoration-line:underline] hover:[text-underline-offset:4px]">
