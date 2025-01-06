@@ -8,7 +8,7 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion"
-import { cn } from "../lib/utils.js"
+import { cn } from "@workspace/ui/lib/utils"
 import Link from "next/link"
 
 type LinkPreviewProps = {
