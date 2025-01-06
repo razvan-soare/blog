@@ -2,11 +2,10 @@ import { RenderMDX } from "@/components/renderMdx"
 import { getArticle } from "@/lib/getArticle"
 
 export default async function ArticlePage({
-  params,
+  params: { slug },
 }: {
   params: { slug: string }
 }) {
-  const { slug } = await params
   const article = await getArticle(slug)
 
   if (!article) {
